@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MonkeyMVVM.MainPage"
+             xmlns:model="clr-namespace:MonkeyMVVM"
+             xmlns:viewmodel="clr-namespace:MonkeyMVVM"
+x:DataType="viewmodel:BaseViewModel"
+             Title="{Binding Animal, StringFormat='{0} Page'}"
+           >
+    <ScrollView>
+    <VerticalStackLayout>
+        <CollectionView ItemsSource="{Binding Monkeys}">
+            <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="model:Monkey">
+                <HorizontalStackLayout Padding="10">
+                            <HorizontalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer 
+                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:BaseViewModel}}, Path=GoToDetailsCommand}"
+                            CommandParameter="{Binding .}"/>
+                            </HorizontalStackLayout.GestureRecognizers>
+                            <Image
+                    Aspect="AspectFill"
+                    HeightRequest="100"
+                    Source="{Binding Image}"
+                    WidthRequest="100" />
+                    <Label VerticalOptions="Center" TextColor="Gray">
+                        <Label.Text>
+                            <MultiBinding StringFormat="{}{0} | {1}">
+                                <Binding Path="Name" />
+                                <Binding Path="Location" />
+                            </MultiBinding>
+                        </Label.Text>
+                    </Label>
+                </HorizontalStackLayout>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+          <!--  <Button Text="Add Monkey" Clicked="Button_Clicked"/> -->
+
+            <Button Text="{Binding Animal, StringFormat='Get {0}s'}" 
+                Command="{Binding GetMonkeysCommand}"
+                IsEnabled="{Binding IsNotBusy}"/>
+            <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           HorizontalOptions="Fill"
+                           VerticalOptions="Center"
+			   Color="{StaticResource Primary}"
+                           />
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+    
+
+</ContentPage>
