@@ -6,27 +6,27 @@
     xmlns:local="clr-namespace:MonkeyMVVM"
     Shell.FlyoutBehavior="Disabled">
     <TabBar>
-        <Tab Title="Monkey">
+        <Tab Title="Monkey" Icon="monkey.png">
             <ShellContent
         Title="MonkeyPage"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MonkeyPage" 
         />
         </Tab>
-        <Tab Title="Dog">
+        <Tab Title="Dog" Icon="dog.png">
             <ShellContent
         Title="DogPage"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="DogPage" />
         </Tab>
-        <Tab Title="Cat">
+        <Tab Title="Cat" Icon="cat.png">
             <ShellContent
                 Title="CatPage"
                 ContentTemplate="{DataTemplate local:MainPage}"
                 Route="CatPage" 
                 />      
         </Tab>
-        <Tab Title="Bear">
+        <Tab Title="Bear" Icon="bear.png">
             <ShellContent
                 Title="BearPage"
                 ContentTemplate="{DataTemplate local:MainPage}"
